@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loja de camisetas - Ruby</title>
+</head>
+<body>
+    <%= nav_bar brand: "Camicase Roupas", brand_link: root_url %>
+
+    <h3>Loja de Camisas do Kleber</h3>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @produtos.each do |produto| %>
+                <tr>
+                    <td><%= produto.nome %></td>
+                    <td><%= produto.descricao %></td>
+                    <td><%= produto.quantidade %></td>
+                    <td><%= produto.preco %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+</body>
+</html>
