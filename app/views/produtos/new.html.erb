@@ -1,20 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Novo produto</title>
-</head>
-<body>
+<!-- formulario ruby:
+    action: "/produtos"
+    method: POST
 
-Nome
-<input type="text" name="nome" />
-Descrição
-<textarea type="text" name="descricao" ></textarea>
-Quantidade
-<input type="number" name="quantidade" />
-Preço
-<input type="number" name="preco" step="0.01" />
+    |f| = nome do formulario
+-->
+<%= form_for Produto.new do |f|%>
 
-<button type="submit">Criar</button>
+<div class="form-group">
+<%= f.label :nome%>
+<%= f.text_field :nome, class: "form-control" %> 
+</div>
 
-</body>
-</html>
+<div class="form-group">
+<%= f.label :descricao%>
+<%= f.text_field :descricao, class: "form-control", rows: 4 %>
+</div>
+
+<div class="form-inline">
+    <div class="form-group">
+    <%= f.label :quantidade%>
+    <%= f.number_field :quantidade, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+    <%= f.label :preco%>
+    <%= f.number_field :preco, class: "form-control", step: 2%> 
+    </div>
+</div>
+<br/>
+<%= f.submit "Criar o produto", class: "btn btn-primary" %>
+<% end %>
