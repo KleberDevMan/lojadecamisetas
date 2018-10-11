@@ -4,7 +4,11 @@
 
     |f| = nome do formulario
 -->
-<%= form_for Produto.new do |f|%>
+<% @produto.errors.full_messages.each do |message|%>
+    <div class="alert alert-danger" role="alert"><%= message%></div>
+<% end %>
+
+<%= form_for @produto do |f|%>
 
 <div class="form-group">
 <%= f.label :nome%>
@@ -24,7 +28,7 @@
 
     <div class="form-group">
     <%= f.label :preco%>
-    <%= f.number_field :preco, class: "form-control", step: 2%> 
+    <%= f.number_field :preco, class: "form-control" %> 
     </div>
 </div>
 <br/>
