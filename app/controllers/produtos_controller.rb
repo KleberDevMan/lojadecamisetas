@@ -7,10 +7,11 @@ class ProdutosController < ApplicationController
 
     def new 
         @produto = Produto.new
+        @departamentos = Departamento.all
     end
 
     def create
-        valores = params.require(:produto).permit :nome, :preco, :descricao, :quantidade
+        valores = params.require(:produto).permit :nome, :preco, :descricao, :quantidade, :departamento_id
         @produto = Produto.new valores
         if @produto.save
             flash[:notice] = "Produto salvo com sucesso"
@@ -18,6 +19,13 @@ class ProdutosController < ApplicationController
         else
             render :new
         end
+    end
+
+    def edit
+        id = params[:id]
+        @produto = Produto.find(id)
+        @departamentos = Departamento.all
+        render :new
     end
 
     def destroy
